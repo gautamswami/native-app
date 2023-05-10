@@ -1,10 +1,11 @@
-import { StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { NativeRouter, Route, Routes, Link } from "react-router-native";
 import HOME from "./screens/home/home";
-import Login from "./screens/login/login";
+import Login from "./screens/login";
 
 export default function App() {
   return (
+    <SafeAreaView style={styles.container}>
     <NativeRouter>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -13,14 +14,12 @@ export default function App() {
         <Route path="/profile" element={<HOME />} />
       </Routes>
     </NativeRouter>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+width:'100%'
   },
 });
