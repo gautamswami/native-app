@@ -1,14 +1,19 @@
 import React, { useRef, useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { useNavigate } from "react-router-native";
 
 export default function LoginPart() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-
+    const navigate = useNavigate();
+    const handleSignin = () => {
+        localStorage.setItem('login',true)
+      navigate("/home");
+    };
     return (<View style={styles.container}>
-        <TextInput style={styles.input} placeholder="Enter email or username" onChangeText={username => setUsername(username)} />
-        <TextInput style={styles.input} placeholder="Password" secureTextEntry onChangeText={password => setPassword(password)} />
-        <Pressable style={styles.button} ><Text style={styles.buttonText}>Sign In</Text></Pressable>
+        <TextInput style={styles.input} placeholder="Enter username" onChangeText={username => setUsername(username)} />
+        <TextInput style={styles.input} placeholder="Enter Password" secureTextEntry onChangeText={password => setPassword(password)} />
+        <Pressable style={styles.button} onPress={() => handleSignin()}><Text style={styles.buttonText}>Sign In</Text></Pressable>
     </View>)
 }
 const styles = StyleSheet.create({

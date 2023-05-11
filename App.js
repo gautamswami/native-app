@@ -6,20 +6,22 @@ import Login from "./screens/login";
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-    <NativeRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<HOME />} />
-        <Route path="/home" element={<HOME />} />
-        <Route path="/profile" element={<HOME />} />
-      </Routes>
-    </NativeRouter>
+      <NativeRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={!localStorage.getItem("login")==false ? <Login /> : <HOME />}
+          />
+          <Route path="/home" element={<HOME />} />
+          <Route path="/profile" element={<HOME />} />
+        </Routes>
+      </NativeRouter>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-width:'100%'
+    width: "100%",
   },
 });
